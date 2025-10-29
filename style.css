@@ -1,0 +1,151 @@
+body {
+      font-family: Arial, sans-serif; /* 設定字體 */
+      transition: all 0.3s ease; /* 平滑過渡效果 */
+      padding: 50px; /* 增加內邊距，避免內容緊貼邊緣 */
+      text-align: center;
+}
+
+:root {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+    /* 預設亮色主題 */
+html[data-theme="light"] {
+    --bg-color: #ffffff; /* 設置三組變數顏色--背景、文字、邊框 */
+    --text-color: #000000; 
+    --border-color: #000000;
+}
+
+    /* 暗黑主題 */
+html[data-theme="dark"] { 
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --border-color: #ffffff;
+    
+}
+
+/* 主題切換按鈕 */
+.toggle-theme {
+    position: fixed;
+    top: 30px;
+    right: 55px;
+    z-index: 1000;
+    padding:10px 20px;
+    background-color: rgb(80, 80, 80);
+    color:#f0f0f0;
+    font-size:20px;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    cursor: pointer;
+}
+/* 按鈕互動效果 */
+.toggle-theme {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toggle-theme:hover { /* 滑鼠懸停效果+使用者互動transform動畫 */
+    transform: translateY(-2px) scale(1.05); /* translateY向上移動並放大 */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25); /* 增加陰影效果 */
+}
+
+.toggle-theme:active { /* 按鈕按下效果 */
+    transform: translateY(0) scale(0.98);
+}
+
+.固定欄 {
+    display: flex;
+    justify-content:center;
+    padding: 0px;
+    z-index: 999;
+}
+
+.主標題 {
+    display: block;
+    width: 100%;
+    margin: 80px 0px 10px 0px;
+    padding: 15px 0px ;
+    background-color: rgb(73, 73, 73);
+    color: rgb(248, 170, 1);
+    text-align: center;
+    
+}
+
+.主標題 strong {
+    background-color: transparent;
+    color: inherit;
+    font-weight: bold;
+}
+
+.container { 
+    display:flex;
+    justify-content:center;
+}
+
+.container div {
+    /* color: white; */
+    font-size: 25px;
+    border: 2px solid var(--border-color);
+    flex-direction: column;
+    width: 100px;
+    height:80px;
+    padding: 10px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    line-height: 1;
+}
+
+ a {
+    text-decoration: none;
+}
+
+.box span {
+    /* color: white; */
+    display: block;
+    text-decoration: none;
+}
+
+.box span:hover  { 
+    color: rgb(255, 187, 0);
+   }
+
+.box-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.box-content img {
+  display: block;
+  width: 50px; 
+  height: 50px;
+  object-fit: contain;
+}
+
+img {
+    display: block;
+}
+
+p {
+    /* color:white;  */
+    font-size:30px;
+    display:flex;
+    justify-content:center;
+    margin:50px 0px 10px 0px;
+}
+
+.video-content {
+    display:flex;
+    justify-content:center;
+}
+
+.box a,
+.box a:visited,
+.box a:active {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
