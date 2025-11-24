@@ -1,6 +1,14 @@
-function toggleTheme() {
-      const html = document.documentElement; //設置html常數
-      const current = html.getAttribute('data-theme'); //獲取當前主題
-      const newTheme = current === 'dark' ? 'light' : 'dark'; //切換主題 ===是否相等
-      html.setAttribute('data-theme', newTheme); //設置新主題
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
     }
+});
+
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute("data-theme") || "light";
+    const next = current === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+}   

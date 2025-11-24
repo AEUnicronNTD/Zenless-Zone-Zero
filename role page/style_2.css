@@ -1,0 +1,149 @@
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+}
+
+html[data-theme="dark"] { /* 暗黑主題 */
+  --bg: #121212;
+  --text: #f0f0f0;
+}
+
+.logo {
+    display: inline-block;
+    width: 100px;
+    margin: 0 auto 30px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+body {
+    background: var(--bg); 
+    color: var(--text);
+    font-family: Arial, sans-serif; /* 設定字體 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    padding: 10px; /* 增加內邊距，避免內容緊貼邊緣 */
+    text-align: center;
+    
+}
+
+
+.character-grid {
+    display: grid; /* 使用 CSS Grid 佈局 */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 依容器寬度自動排版：每個欄位最小寬度為250px，最大可拉伸到 1fr（填滿剩餘空間），auto-fit 會自動填滿並壓縮空格，使欄位數自動增減 */
+    gap: 50px; /* 欄位間距 */
+    padding: 50px; /* 每格內邊距 */
+    font-size:20px;
+}
+
+.character-grid p {
+    font-size: 18px;
+}
+
+.character-grid img {
+    display:block;  
+    width: 250px;
+    border-radius: 12px;
+    margin: 0 auto;
+    padding: 0px;
+   
+}
+
+.card {
+    border: 5px solid var(--border-color, #999);
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+/* 滑鼠互動效果 */
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 各自設定顏色才用 */
+/* .character-grid > .character-item:nth-child(1) {
+    border-color: #ff6b6b;
+    background-color: #fff4f4;
+    color: #8b0000;
+    box-shadow: 0 0 10px #ff6b6b;
+
+}
+.character-grid > .character-item:nth-child(2) {
+    border-color: #ffd93d;
+}
+.character-grid > .character-item:nth-child(3) {
+    border-color: #c300ff;
+}
+.character-grid > .character-item:nth-child(4) {
+    border-color: #00d9ff;
+}
+.character-grid > .character-item:nth-child(5) {
+    border-color: #21277e;
+} */
+
+
+/* 卡片基礎樣式 */
+.card {
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 15px;
+    padding: 20px;
+    border: 5px solid #999; /* 預設邊框 */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 統一卡片顏色時使用 */
+/* .card {
+    border-color: #ff6b6b;
+    --bg: #000000;
+    --text: #8b0000;
+    box-shadow: 0 0 10px #ff6b6b;
+} */
+
+/* 卡片內的圖片 */
+.card img {
+    width: 250px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+.card.fire {
+    border-color: #ff6b6b;
+    --bg: #fff4f4;
+    --text: #8b0000;
+    box-shadow: 0 0 10px #ff6b6b;
+}
+
+.card.eagle {
+    border-color: #ffd93d;
+    --bg: #fffbea;
+    --text: #8b8000;
+    box-shadow: 0 0 10px #ffd93d;
+}
+
+.card.flame {
+    border-color: #8a76c0;
+    --bg: #a98bbb;
+    --text: #2a035e;
+    box-shadow: 0 0 10px #bcb1db;
+}
+
+.card.ice {
+    border-color: #277083;
+    --bg: #8ea1c4;
+    --text: #0041a1;
+    box-shadow: 0 0 10px #277083;
+}
+
+.card.wolf {
+    border-color: #3c4596;
+    --bg: #ffffff;
+    --text: #494949;
+    box-shadow: 0 0 10px #3c4596;
+}
