@@ -47,6 +47,7 @@ html[data-theme="dark"] {
 .toggle-theme:hover { /* 滑鼠懸停效果+使用者互動transform動畫 */
     transform: translateY(-2px) scale(1.05); /* translateY向上移動並放大 */
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25); /* 增加陰影效果 */
+    cursor: pointer;
 }
 
 .toggle-theme:active { /* 按鈕按下效果 */
@@ -63,7 +64,7 @@ html[data-theme="dark"] {
 .主標題 {
     display: block;
     width: 100%;
-    margin: 80px 0px 10px 0px;
+    margin: 10px 0px 10px 0px;
     padding: 15px 0px ;
     background-color: rgb(73, 73, 73);
     color: rgb(248, 170, 1);
@@ -78,14 +79,18 @@ html[data-theme="dark"] {
 }
 
 .container { 
-    display:flex;
+    display:inline-flex;
     justify-content:center;
+    border: 4px solid var(--border-color);
+    border-radius: 15px;
+    overflow: hidden; /* 讓圓角正確裁切內容 */
 }
 
 .container div {
-    /* color: white; */
+    flex: 1;
     font-size: 25px;
-    border: 2px solid var(--border-color);
+    border-right: 4px solid var(--border-color);
+    border-radius: 2px;
     flex-direction: column;
     width: 100px;
     height:80px;
@@ -96,7 +101,11 @@ html[data-theme="dark"] {
     line-height: 1;
 }
 
- a {
+.container div:last-child {
+    border-right: none; /* 移除最後一個區塊的右邊框 */
+}
+
+a {
     text-decoration: none;
 }
 
