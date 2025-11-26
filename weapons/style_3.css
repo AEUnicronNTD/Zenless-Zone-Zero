@@ -1,0 +1,7 @@
+.weapons {
+    display: grid; /* 使用 CSS Grid 佈局 */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 依容器寬度自動排版：每個欄位最小寬度為250px，最大可拉伸到 1fr（填滿剩餘空間），auto-fit 會自動填滿並壓縮空格，使欄位數自動增減 */
+    gap: 50px; /* 欄位間距 */
+    padding: 50px; /* 每格內邊距 */
+    font-size:20px;
+}
