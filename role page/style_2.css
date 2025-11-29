@@ -1,11 +1,13 @@
 :root {
   --bg: #ffffff;
   --text: #000000;
+  --border-color: #000000; 
 }
 
 html[data-theme="dark"] { /* 暗黑主題 */
   --bg: #121212;
   --text: #f0f0f0;
+  --border-color: #f0f0f0;
 }
 
 .logo {
@@ -17,7 +19,7 @@ html[data-theme="dark"] { /* 暗黑主題 */
 }
 
 .logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.2);
     transition: transform 0.3s ease;
 }
 
@@ -53,19 +55,38 @@ body {
    
 }
 
-.card {
-    border: 5px solid var(--border-color, #999);
-    border-radius: 15px;
-    padding: 20px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
 /* 滑鼠互動效果 */
 .card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* 各自設定顏色才用 */
+/* 卡片內部的直向置中與等距排版 */
+.card {
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 15px;
+    padding: 20px;
+    border: 5px solid #999; /* 預設邊框 */
+    border-color: rgb(255, 211, 91);
+    --bg: rgb(80, 80, 80);
+    --text: #ffffff;
+    box-shadow: 0 0 10px #ff7b00;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* 水平置中所有內容 */
+    text-align: center;    /* 文字置中 */
+    
+}
+
+.card img {
+    width: 250px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+/* 各自設定顏色才用的方法一 */
 /* .character-grid > .character-item:nth-child(1) {
     border-color: #ff6b6b;
     background-color: #fff4f4;
@@ -87,32 +108,8 @@ body {
 } */
 
 
-/* 卡片基礎樣式 */
-.card {
-    background: var(--bg);
-    color: var(--text);
-    border-radius: 15px;
-    padding: 20px;
-    border: 5px solid #999; /* 預設邊框 */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
 
-/* 統一卡片顏色時使用 */
-/* .card {
-    border-color: #ff6b6b;
-    --bg: #000000;
-    --text: #8b0000;
-    box-shadow: 0 0 10px #ff6b6b;
-} */
-
-/* 卡片內的圖片 */
-.card img {
-    width: 250px;
-    display: block;
-    margin: 0 auto;
-    border-radius: 12px;
-}
-
+/* 各自設定顏色才用的方法二
 .card.fire {
     border-color: #ff6b6b;
     --bg: #fff4f4;
@@ -146,4 +143,21 @@ body {
     --bg: #ffffff;
     --text: #494949;
     box-shadow: 0 0 10px #3c4596;
+} */
+
+
+
+/* 統一卡片顏色時使用 */
+
+
+.card h2 { color: rgb(255, 187, 0); }
+
+.card p {
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-character;
+  line-height: 1.7;
+  font-size: 18px;
+  font-family: "Noto Sans TC", sans-serif;
+  white-space: normal; /* 確保沒有奇怪的保留空白 */
 }

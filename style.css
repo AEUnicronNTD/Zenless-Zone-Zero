@@ -29,8 +29,8 @@ html[data-theme="dark"] {
 /* 主題切換按鈕 */
 .toggle-theme {
     position: fixed;
-    top: 30px;
-    right: 55px;
+    top: 75px;
+    right: 80px;
     z-index: 1000;  
     padding:10px 20px;
     background-color: rgb(80, 80, 80);
@@ -55,7 +55,7 @@ html[data-theme="dark"] {
 }
 
 .固定欄 {
-    display: flex;
+    display:block;
     justify-content:center;
     padding: 0px;
     z-index: 999;
@@ -64,19 +64,27 @@ html[data-theme="dark"] {
 .主標題 {
     display: block;
     width: 100%;
-    margin: 10px 0px 10px 0px;
-    padding: 15px 0px ;
+    margin: 0px 0px 0px 0px;
+    padding: 0px ;
     background-color: rgb(73, 73, 73);
-    color: rgb(248, 170, 1);
+    color: rgb(255, 255, 255);
     text-align: center;
-    
 }
 
 .主標題 strong {
     background-color: transparent;
-    color: inherit;
+    color: rgb(255, 187, 0);
     font-weight: bold;
 }
+
+.zzz {
+    display: block;
+    width: 60px;
+    margin: 0px 15px 0px 15px;
+    object-fit: contain; /* 保持圖片比例 */
+    z-index: 1000;
+}
+
 
 .container { 
     display:inline-flex;
@@ -84,6 +92,7 @@ html[data-theme="dark"] {
     border: 4px solid var(--border-color);
     border-radius: 15px;
     overflow: hidden; /* 讓圓角正確裁切內容 */
+    margin: 20px 0px;
 }
 
 .container div {
@@ -171,5 +180,23 @@ p {
 .box img,
 .box span {
     cursor: pointer; /* 只有圖片與文字顯示手指 */
+}
+
+/* 與圖片並排的標題（圖片置左，文字置中對齊整體） */
+.主標題--with-img {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 讓整組內容在寬度中置中 */
+    gap: 20px; /* 圖片與文字間距 */
+}
+
+.主標題--with-img strong {
+    font-size: 30px;
+}
+
+.主標題--with-img .zzz {
+    width: 60px;
+    height: 60px;
+    margin: 0; 
 }
 

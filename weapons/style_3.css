@@ -5,3 +5,7 @@
     padding: 50px; /* 每格內邊距 */
     font-size:20px;
 }
+
+.weapons p {
+    padding-top: 30px;
+}
