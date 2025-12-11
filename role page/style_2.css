@@ -86,7 +86,22 @@ body {
     border-radius: 12px;
 }
 
-/* 各自設定顏色才用的方法一 */
+
+ .card h2,
+    .card p {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease, opacity 0.25s ease;
+    }
+
+    .card:hover h2,
+    .card:hover p {
+        max-height: 500px; /* 展開最高500px展示內容 */
+        opacity: 1; /* 透明度變回100%顯示內容 */
+    }
+
+    /* 各自設定顏色才用的方法一 */
 /* .character-grid > .character-item:nth-child(1) {
     border-color: #ff6b6b;
     background-color: #fff4f4;
@@ -154,10 +169,10 @@ body {
 
 .card p {
   margin: 0;
-  text-align: justify;
-  text-justify: inter-character;
-  line-height: 1.7;
-  font-size: 18px;
-  font-family: "Noto Sans TC", sans-serif;
+  text-align: justify; /*文字對齊*/
+  text-justify: inter-character; /* 中文對齊方式 */
+  line-height: 1.7; /* 行距 */
+  font-size: 18px; /* 字體大小 */
+  font-family: "Noto Sans TC", sans-serif; /* 字體 */
   white-space: normal; /* 確保沒有奇怪的保留空白 */
 }
