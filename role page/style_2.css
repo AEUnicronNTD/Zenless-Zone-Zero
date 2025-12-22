@@ -35,32 +35,42 @@ body {
 
 
 .character-grid {
-    display: grid; /* 使用 CSS Grid 佈局 */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 依容器寬度自動排版：每個欄位最小寬度為250px，最大可拉伸到 1fr（填滿剩餘空間），auto-fit 會自動填滿並壓縮空格，使欄位數自動增減 */
-    gap: 50px; /* 欄位間距 */
-    padding: 50px; /* 每格內邊距 */
-    font-size:20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 50px;
+    padding: 50px;
+    font-size: 20px;
+    align-items: start;
 }
 
-.character-grid p {
-    font-size: 18px;
+.character-grid article {
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 .character-grid img {
-    display:block;  
-    width: 250px;
+    width: 100%;
+    display: block;
     border-radius: 12px;
     margin: 0 auto;
     padding: 0px;
-   
 }
+
+.character-grid h2 {
+    font-size: 25px;
+}
+
+.character-grid p {
+    font-size: 15px;
+}
+
 
 /* 滑鼠互動效果 */
 .card:hover {
     transform: translateY(-8px) scale(1.03);
 }
 
-/* 卡片內部的直向置中與等距排版 */
+/* 統一卡片的顏色以及內部的直向置中與等距排版 */
 .card {
     background: var(--bg);
     color: var(--text);
@@ -80,26 +90,14 @@ body {
 }
 
 .card img {
-    width: 250px;
+    width: 200px;
     display: block;
     margin: 0 auto;
     border-radius: 12px;
 }
 
 
- .card h2,
-    .card p {
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        transition: max-height 0.25s ease, opacity 0.25s ease;
-    }
 
-    .card:hover h2,
-    .card:hover p {
-        max-height: 500px; /* 展開最高500px展示內容 */
-        opacity: 1; /* 透明度變回100%顯示內容 */
-    }
 
     /* 各自設定顏色才用的方法一 */
 /* .character-grid > .character-item:nth-child(1) {
@@ -160,19 +158,28 @@ body {
     box-shadow: 0 0 10px #3c4596;
 } */
 
-
-
-/* 統一卡片顏色時使用 */
-
-
 .card h2 { color: rgb(255, 187, 0); }
+
+.card h2,
+    .card p {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease, opacity 0.25s ease;
+    }
+
+.card:hover h2,
+    .card:hover p {
+        max-height: 600px; /* 展開最高600px展示內容 */
+        opacity: 1; /* 透明度變回100%顯示內容 */
+    }
 
 .card p {
   margin: 0;
   text-align: justify; /*文字對齊*/
   text-justify: inter-character; /* 中文對齊方式 */
   line-height: 1.7; /* 行距 */
-  font-size: 18px; /* 字體大小 */
+  font-size: 15px; /* 字體大小 */
   font-family: "Noto Sans TC", sans-serif; /* 字體 */
   white-space: normal; /* 確保沒有奇怪的保留空白 */
 }
