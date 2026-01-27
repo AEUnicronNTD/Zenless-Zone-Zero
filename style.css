@@ -1,8 +1,9 @@
 body {
-      font-family: Arial, sans-serif; /* 設定字體 */
-      transition: all 0.3s ease; /* 平滑過渡效果 */
-      padding: 50px; /* 增加內邊距，避免內容緊貼邊緣 */
-      text-align: center;
+    font-family: Arial, sans-serif; /* 設定字體 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    margin: 0 ;
+    padding: 0px 50px 50px 50px; /* 增加內邊距，避免內容緊貼邊緣 */
+    text-align: center;
 }
 
 /* 對應主題顏色 */
@@ -26,11 +27,214 @@ html[data-theme="dark"] {
     
 }
 
-/* 主題切換按鈕 */
-.toggle-theme {
+/* 登入視窗內輸入框樣式 */
+.em , .pw  {
+    display : flex; 
+    flex-direction: column; /* 讓 input 跟錯誤文字上下排列 */
+    align-items: flex-start; /* 文字靠左對齊 */
+    border-radius: 15px;
+    margin:15px 0px 0px 0px;
+    overflow: hidden;
+    outline: none; 
+    position: relative; /* 讓浮動標籤以這個容器為基準 */
+}
+
+
+.em input:hover, 
+.pw input:hover{
+    border:solid 2px   rgb(255, 187, 0); /* 滑過輸入框時：黃色邊框 */
+}
+
+/* 帳號 / 密碼錯誤提示：預設隱藏，顯示時為紅色小字 */
+.error-text {
+    display: none;
+    color: rgb(247, 123, 114);
+    font-size: 12px;
+    margin: 0px 0 0 8px;
+    text-align: left;
+}
+
+.error-text.show {
+    display: block; /* 顯示時用區塊，佔一整行 */
+}
+
+.login-submit {
+    background-color: var(--bg-color);  
+    color: black;      
+    margin:25px 0px 15px 0px;
+    
+    width:300px;
+    height:40px;
+    border-radius: 15px;
+    border:none;
+    cursor: pointer;
+    background-color: #e0e4e9;
+}
+.problem, .register {
+    display: inline-block;
+    font-size: 14px;
+    color: rgb(255, 187, 0);
+    cursor: pointer;
+}
+
+.problem{
+    margin:10px 85px 10px 0px;
+}
+.register{
+    margin:10px 0px 10px 85px;
+}
+
+
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+  margin: 0 12px;
+}
+
+.login-info input {
+  width: 100%;
+  border: 2px solid transparent; /* 先給固定粗細的透明邊框，避免尺寸跳動 */
+  outline:none;
+  padding: 16px 15px 6px 15px; /* 上方多留空間給浮動標籤 */
+  margin:10px 0px 10px 0px;
+  border-radius: 15px;
+  background: #e0e4e9;
+  color: black;
+  box-sizing: border-box;
+  display: block;
+}
+
+/* 使用者有輸入內容或輸入框正在輸入時：讓邊框常駐變成紅色 */
+.em input:focus,
+.em input:not(:placeholder-shown),
+.pw input:focus,
+.pw input:not(:placeholder-shown) {
+        border-color: rgb(247, 123, 114);
+}
+
+/* 浮動標籤：
+   這個 label 會疊在 input 上，看起來像是 placeholder 文字。
+   之後再配合下面的 :focus / :not(:placeholder-shown) 讓它「浮起來」。 */
+.float-label {
+    position: absolute;      /* 絕對定位，位置以外層 .em/.pw 為基準 */
+    left: 15px;              /* 靠左一點，對齊輸入文字 */
+    top: 50%;                /* 先放在 input 高度中間 */
+    transform: translateY(-50%); /* 搭配 top:50%，讓文字正好垂直置中 */
+    font-size: 14px;         /* 預設字體大小 */
+    color: #666;             /* 預設灰色，看起來像一般 placeholder */
+    pointer-events: none;    /* 讓滑鼠點擊可以穿透到 input，不會點到 label */
+    transition: all 0.2s ease; /* 加上過渡效果，位移與大小改變時比較順 */
+}
+
+/* 當輸入框「有聚焦」或「裡面有輸入任何東西」時：
+   讓標籤往上移、變小、變紅，看起來像是浮在輸入框上方的提示文字。 */
+.em input:focus + .float-label,
+.em input:not(:placeholder-shown) + .float-label,
+.pw input:focus + .float-label,
+.pw input:not(:placeholder-shown) + .float-label {
+    top: 9px;          /* 往上移到輸入框內的上方位置（保留一點距離） */
+    transform: none;   /* 取消原本 translateY(-50%)，避免再往下拉 */
+    font-size: 12px;   /* 字變小一點，看起來比較像「標籤」 */
+    color: rgb(247, 123, 114);       /* 變成紅色，和下面紅字錯誤提示做區分 */
+}
+
+/* 隱藏元素用的類別 */
+.hidden {
+    display: none;
+
+}
+
+.overlay {
     position: fixed;
-    top: 75px;
-    right: 80px;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+}
+
+.login-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-color);  
+    color: var(--text-color);      
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    z-index: 1001;
+}
+
+
+/* 右上角 X 按鈕 */
+.close-modal {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    font-size: 30px; /*調整xx的大小*/
+    cursor: pointer;
+}
+
+.social-login {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* 圓形按鈕外觀 */
+.social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background:rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* icon 圖片大小 */
+.social-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 保持圖片比例 */
+}
+
+
+/* 主題切換按鈕 */
+#toggle-theme {
+    position: fixed;
+    top: 15px;
+    right: 70px;
+}
+
+#loginBtn {
+    position: fixed;
+    top: 15px;
+    right: 245px;
+}
+
+#toggle-theme, /* 按鈕互動效果 */
+#loginBtn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     z-index: 1000;  
     padding:10px 20px;
     background-color: rgb(80, 80, 80);
@@ -39,18 +243,16 @@ html[data-theme="dark"] {
     border: 2px solid var(--border-color);
     border-radius: 15px;
 }
-/* 按鈕互動效果 */
-.toggle-theme {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
 
-.toggle-theme:hover { /* 滑鼠懸停效果+使用者互動transform動畫 */
-    transform: translateY(-2px) scale(1.05); /* translateY向上移動並放大 */
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25); /* 增加陰影效果 */
+#toggle-theme:hover,  /* 滑鼠懸停效果+使用者互動transform動畫 */
+#loginBtn:hover {
+    transform: translateY(-2px) scale(1.05);        /* translateY向上移動並放大 */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);   /* 增加陰影效果 */
     cursor: pointer;
 }
 
-.toggle-theme:active { /* 按鈕按下效果 */
+#toggle-theme:active, /* 按鈕按下效果 */
+#loginBtn:active {
     transform: translateY(0) scale(0.98);
 }
 
@@ -75,6 +277,24 @@ html[data-theme="dark"] {
     background-color: transparent;
     color: rgb(255, 187, 0);
     font-weight: bold;
+}
+
+/* 圖片並排標題（圖片置左，文字置中對齊整體） */
+.主標題--with-img {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 讓整組內容在寬度中置中 */
+    gap: 20px; /* 圖片與文字間距 */
+}
+
+.主標題--with-img strong {
+    font-size: 30px;
+}
+
+.主標題--with-img .zzz {
+    width: 60px;
+    height: 60px;
+    margin: 0; 
 }
 
 .zzz {
@@ -182,21 +402,5 @@ p {
     cursor: pointer; /* 只有圖片與文字顯示手指 */
 }
 
-/* 與圖片並排的標題（圖片置左，文字置中對齊整體） */
-.主標題--with-img {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* 讓整組內容在寬度中置中 */
-    gap: 20px; /* 圖片與文字間距 */
-}
 
-.主標題--with-img strong {
-    font-size: 30px;
-}
-
-.主標題--with-img .zzz {
-    width: 60px;
-    height: 60px;
-    margin: 0; 
-}
 
