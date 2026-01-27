@@ -17,6 +17,9 @@
 ## 備註
  此專案為學習用途，非官方網站。
 
+## 預覽
+https://aeunicronntd.github.io/Zenless-Zone-Zero/
+
 ## 專案狀態
 - 已完成：版面切版、基本互動
 - 進行中：JavaScript 結構整理
