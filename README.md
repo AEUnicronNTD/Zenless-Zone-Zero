@@ -22,7 +22,7 @@
 https://aeunicronntd.github.io/Zenless-Zone-Zero/
 
 ## 專案狀態
-- 已完成：版面切版、基本互動
+- 已完成：部分版面切版、基本互動
 - 進行中：JavaScript 結構整理
 - 規劃中：RWD 與效能優化
 
