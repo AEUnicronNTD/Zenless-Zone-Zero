@@ -1,11 +1,11 @@
 # 專案名稱
 - [絕區零Zenless Zone Zero ]遊戲網站
 
-## 預覽
-https://aeunicronntd.github.io/Zenless-Zone-Zero/
-
 本專案為個人前端練習作品，以遊戲《絕區零》為主題，
 透過實作一個遊戲的介紹網站版面，練習整體網頁結構與互動效果。
+
+## 預覽
+https://aeunicronntd.github.io/Zenless-Zone-Zero/
 
 ## 使用技術
 - HTML
