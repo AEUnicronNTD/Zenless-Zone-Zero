@@ -1,4 +1,4 @@
-# 專案名稱
+ # 專案名稱
 - [絕區零Zenless Zone Zero ]遊戲網站
 
 本專案為個人前端練習作品，以遊戲《絕區零》為主題，
@@ -14,7 +14,7 @@ https://aeunicronntd.github.io/Zenless-Zone-Zero/
 
 ## 練習重點
 - 網頁版面切版與樣式設計(grid)
-- 圖片與動畫效果呈現
+- 圖片文字效果呈現
 - JavaScript 基礎互動邏輯(DarkModeSwitch、simpleLogin)
 - 專案結構與檔案管理
 
